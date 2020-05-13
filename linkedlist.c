@@ -151,10 +151,9 @@ Element remove_from_start(List_ptr list)
   }
   
   Node_ptr previous_first = list->first;
-  Element previous_first_element = list->first->element;
   list->first = list->first->next;
   list->length--;
-  return list->first->element;
+  return previous_first->element;
 }
 
 Element remove_from_end(List_ptr list)
@@ -244,7 +243,8 @@ Status clear_list(List_ptr list)
   }
   while (list->first != NULL)
   {
-    remove_from_start(list);
+    Element element_to_be_freed = remove_from_start(list);
+    free(element_to_be_freed);
   }
   return Success;
 }
