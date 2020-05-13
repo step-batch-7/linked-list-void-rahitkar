@@ -44,6 +44,7 @@ typedef void (*Print)(Element);
 
 
 typedef char* Char_ptr;
+typedef int* Int_ptr;
 
 List_ptr create_list(void);
 

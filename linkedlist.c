@@ -246,3 +246,16 @@ void destroy_list(List_ptr list)
   clear_list(list);
   free(list);
 }
+
+List_ptr map(List_ptr src, Mapper mapper)
+{
+   List_ptr new_list = create_list();
+  Node_ptr p_walk = src->first;
+  while (p_walk != NULL)
+  {
+    Element element = (*mapper)(p_walk->element);
+    add_to_list(new_list, element);
+    p_walk = p_walk->next;
+  }
+  return new_list;
+}
