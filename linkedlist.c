@@ -43,6 +43,11 @@ Status insert_at(List_ptr list, Element value, int position)
     return add_to_start(list, value);
   }
 
+  if (position == list->length)
+  {
+    return add_to_list(list, value);
+  }
+  
   Node_ptr p_walk = list->first;
   Node_ptr previous_node = list->first;
   int counter = 0;
@@ -95,7 +100,8 @@ Status add_unique(List_ptr list, Element value, Matcher matcher)
     return Failure;
   }
   int position = search(list, value, matcher);
-  if (position >= list->length)
+  printf("\n%d %d=======\n", position, list->length);
+  if (position == list->length)
   {
     return add_to_list(list, value);
   }
