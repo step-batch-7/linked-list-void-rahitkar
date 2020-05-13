@@ -135,9 +135,7 @@ Element remove_at(List_ptr list, int position)
   }
   temp_node->next = p_walk->next;
   list->length--;
-  Element removed_element = p_walk->element;
-  free(p_walk);
-  return removed_element;
+  return p_walk->element;
 }
 
 Element remove_from_start(List_ptr list)
@@ -156,8 +154,7 @@ Element remove_from_start(List_ptr list)
   Element previous_first_element = list->first->element;
   list->first = list->first->next;
   list->length--;
-  free(previous_first);
-  return previous_first_element;
+  return list->first->element;
 }
 
 Element remove_from_end(List_ptr list)
@@ -184,9 +181,7 @@ Element remove_from_end(List_ptr list)
   }
   list->last = temp_node;
   list->last->next = NULL;
-  Element removed_element = p_walk->element;
-  free(p_walk);
-  return removed_element;
+  return p_walk->element;
 }
 
 int search(List_ptr list, Element value, Matcher matcher)
