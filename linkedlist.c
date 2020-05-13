@@ -275,3 +275,15 @@ List_ptr filter(List_ptr src, Predicate predicate)
   }
   return new_list;
 }
+
+Element reduce(List_ptr src, Element init, Reducer reducer)
+{
+  Node_ptr p_walk = src->first;
+
+  while(p_walk != NULL)
+  {
+    init = (*reducer)(p_walk->element, init);
+    p_walk = p_walk->next;
+  }
+  return init;
+}
