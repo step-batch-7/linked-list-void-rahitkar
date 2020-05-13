@@ -143,6 +143,11 @@ Element remove_at(List_ptr list, int position)
 
 Element remove_from_start(List_ptr list)
 {
+  if (list->first == NULL)
+  {
+    return NULL;
+  }
+  
   Node_ptr previous_first = list->first;
   Element previous_first_element = list->first->element;
   list->first = list->first->next;
@@ -153,6 +158,11 @@ Element remove_from_start(List_ptr list)
 
 Element remove_from_end(List_ptr list)
 {
+  if (list->first == NULL)
+  {
+    return NULL;
+  }
+  
   if (list->length == 1)
   {
     return remove_from_start(list);
