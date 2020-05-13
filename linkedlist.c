@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "linkedlist.h"
 
@@ -47,7 +48,7 @@ Status insert_at(List_ptr list, Element value, int position)
   {
     return add_to_list(list, value);
   }
-  
+
   Node_ptr p_walk = list->first;
   Node_ptr previous_node = list->first;
   int counter = 0;
@@ -198,20 +199,21 @@ Element remove_first_occurrence(List_ptr list, Element value, Matcher matcher)
     return NULL;
   }
   int position = search(list, value, matcher);
-
   return remove_at(list, position);
 }
 
 List_ptr remove_all_occurrences(List_ptr list, Element value, Matcher matcher)
 {
-  Element element = remove_first_occurrence(list, value, matcher), counter = 0;
   List_ptr removed_elemenet_list = create_list();
 
-  while (element == NULL)
+  int position = search(list, value, matcher);
+  while (position < list->length)
   {
-    element = remove_first_occurrence(list, value, matcher);
-    add_to_list(list, element);
+    Element element = remove_at(list, position);
+    add_to_list(removed_elemenet_list, element);
+    position = search(list, value, matcher);
   }
+  
   return removed_elemenet_list;
 }
 
