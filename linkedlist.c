@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #include "linkedlist.h"
 
@@ -148,6 +147,11 @@ Element remove_from_start(List_ptr list)
     return NULL;
   }
   
+  if (list->length == 1)
+  {
+    list->last = NULL;
+  }
+  
   Node_ptr previous_first = list->first;
   Element previous_first_element = list->first->element;
   list->first = list->first->next;
@@ -162,7 +166,7 @@ Element remove_from_end(List_ptr list)
   {
     return NULL;
   }
-  
+
   if (list->length == 1)
   {
     return remove_from_start(list);
