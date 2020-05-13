@@ -101,7 +101,6 @@ Status add_unique(List_ptr list, Element value, Matcher matcher)
     return Failure;
   }
   int position = search(list, value, matcher);
-  printf("\n%d %d=======\n", position, list->length);
   if (position == list->length)
   {
     return add_to_list(list, value);
@@ -249,7 +248,7 @@ void destroy_list(List_ptr list)
 
 List_ptr map(List_ptr src, Mapper mapper)
 {
-   List_ptr new_list = create_list();
+  List_ptr new_list = create_list();
   Node_ptr p_walk = src->first;
   while (p_walk != NULL)
   {
@@ -286,4 +285,14 @@ Element reduce(List_ptr src, Element init, Reducer reducer)
     p_walk = p_walk->next;
   }
   return init;
+}
+
+void forEach(List_ptr src, ElementProcessor processor)
+{
+  Node_ptr p_walk = src->first;
+  while (p_walk != NULL)
+  {
+    (*processor)(p_walk->element);
+    p_walk = p_walk->next;
+  }
 }
