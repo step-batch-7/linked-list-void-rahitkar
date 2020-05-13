@@ -95,10 +95,6 @@ Status add_to_list(List_ptr list, Element value)
 
 Status add_unique(List_ptr list, Element value, Matcher matcher)
 {
-  if (list->first == NULL)
-  {
-    return Failure;
-  }
   int position = search(list, value, matcher);
   if (position == list->length)
   {
