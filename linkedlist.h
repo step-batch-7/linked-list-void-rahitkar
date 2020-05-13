@@ -40,12 +40,16 @@ typedef Status (*Predicate)(Element);
 typedef Element (*Reducer)(Element, Element);
 typedef void (*ElementProcessor)(Element);
 typedef Status (*Matcher)(Element, Element);
+typedef void (*Print)(Element);
+
+
+typedef char* Char_ptr;
 
 List_ptr create_list(void);
 
-Status add_to_list(List_ptr, Element);
-Status add_to_start(List_ptr, Element);
-Status insert_at(List_ptr, Element element, int position);
+Status add_to_list(List_ptr, Element);//
+Status add_to_start(List_ptr, Element);//
+Status insert_at(List_ptr, Element element, int position);//
 
 List_ptr reverse(List_ptr);
 
@@ -54,14 +58,21 @@ List_ptr filter(List_ptr, Predicate);
 Element reduce(List_ptr, Element, Reducer);
 void forEach(List_ptr, ElementProcessor processor);
 
-Element remove_from_start(List_ptr); // Returns Element which was removed
-Element remove_from_end(List_ptr);
-Element remove_at(List_ptr, int position);
+Element remove_from_start(List_ptr); // Returns Element which was removed //
+Element remove_from_end(List_ptr); //
+Element remove_at(List_ptr, int position); //
 
-Element remove_first_occurrence(List_ptr, Element element, Matcher matcher);
-List_ptr remove_all_occurrences(List_ptr, Element element, Matcher matcher); // Returns List of removed elements
+Element remove_first_occurrence(List_ptr, Element element, Matcher matcher); //
+List_ptr remove_all_occurrences(List_ptr, Element element, Matcher matcher); // Returns List of removed elements //
 
-Status add_unique(List_ptr list, Element element, Matcher matcher);
+Status add_unique(List_ptr list, Element element, Matcher matcher);//
 
-Status clear_list(List_ptr);
+void display(List_ptr list, Print print);
+
+int search(List_ptr list, Element value, Matcher matcher);
+
+void destroy_list(List_ptr list);
+
+Status clear_list(List_ptr);//
+
 #endif
