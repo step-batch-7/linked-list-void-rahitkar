@@ -296,3 +296,16 @@ void forEach(List_ptr src, ElementProcessor processor)
     p_walk = p_walk->next;
   }
 }
+
+List_ptr reverse(List_ptr src)
+{
+  List_ptr new_list = create_list();
+  Node_ptr p_walk = src->first;
+
+  while(p_walk != NULL)
+  {
+    add_to_start(new_list, p_walk->element);
+    p_walk = p_walk->next;
+  }
+  return new_list;
+}
