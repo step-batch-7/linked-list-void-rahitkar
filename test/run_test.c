@@ -1,6 +1,8 @@
 #include "test_add.h"
 #include "test_remove.h"
-#include "lindedlist_test.h"
+#include "test_list_methods.h"
+#include "linkedlist_test.h"
+
 
 int main(void)
 {
@@ -9,4 +11,5 @@ int main(void)
 
   test_add_functions();
   test_remove_functions();
+  test_list_method_functions();
 }

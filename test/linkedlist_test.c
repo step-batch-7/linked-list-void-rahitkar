@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "lindedlist_test.h"
+#include "linkedlist_test.h"
 
 #define SUCCESS_SYMBOL "    ✅ "
 #define FAILURE_SYMBOL "    ❌ "

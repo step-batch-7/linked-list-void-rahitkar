@@ -1,5 +1,5 @@
 #include "../linkedlist.h"
-#include "lindedlist_test.h"
+#include "linkedlist_test.h"
 #include "test_add.h"
 
 void test_add_functions()
