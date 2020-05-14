@@ -8,4 +8,5 @@ int main(void)
   it("Should create a list with null in first and last and with length zero", assert_empty_list());
 
   test_add_functions();
+  test_remove_functions();
 }
