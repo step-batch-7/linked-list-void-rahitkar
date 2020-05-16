@@ -10,6 +10,8 @@ void print_int(Element number);
 Status is_int_equal(Element num1, Element num2);
 Element create_int_element(int value);
 
+List_ptr create_linked_list(void* data, int length, int data_size);
+
 Status assert_empty_list();
 Status assert_list(List_ptr list1, List_ptr list2, Matcher matcher);
 #endif

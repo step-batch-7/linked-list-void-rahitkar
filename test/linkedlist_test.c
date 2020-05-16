@@ -46,6 +46,16 @@ Element create_int_element(int value)
   return element;
 }
 
+List_ptr create_linked_list(void* src, int length, int data_size)
+{
+  List_ptr new_list = create_list();
+  while (new_list->length < length)
+  {
+    add_to_list(new_list, src + (new_list->length * data_size));
+  }
+  return new_list;
+}
+
 Status assert_list(List_ptr list1, List_ptr list2, Matcher matcher)
 {
   if (list1->length != list2->length)
